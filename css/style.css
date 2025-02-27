@@ -1,0 +1,260 @@
+body {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #05182f;
+    font-family: "Roboto", sans-serif;
+    background-color: #FFFFFF;
+    margin: 0;
+}
+
+header {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    background-color: #877ec7;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-header {
+    display: flex;
+}
+
+.navigation {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigationItem {
+    margin-right: 20px;
+}
+
+.navigationItem a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navigationItem a:hover {
+    color: #163152;
+}
+
+@media (max-width: 768px) {
+    .header1 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navigationItem {
+        margin: 10px 0;
+        margin-right: 0;
+    }
+}
+.headerMain {
+  width: 1270px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.headerMain img {
+    vertical-align: bottom;
+    margin-bottom: 50px;
+}
+
+.headerMain h1 {
+    text-align: left;
+    font-size: 64px;
+    line-height: 64px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    margin: 0;
+}
+/*
+*/
+
+.event0 {
+    padding: 80px 0;
+    background-color: #F0EEFF;
+}
+
+.event {
+    display: flex;
+    justify-content: space-between;
+    width: 1270px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    margin-bottom: 60px;
+}
+
+.event:last-child{
+    margin-bottom: 0;
+}
+
+
+.content {
+    width: 570px;
+    padding: 20px;
+    padding-bottom: 28px;
+}
+
+.content h3 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    color: #0e0438;
+    margin-bottom: 12px;
+}
+
+.content p{
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+.content .last {
+    margin-bottom: 0;
+}
+
+.gallery {
+    text-align: center;
+}
+
+.gallery h2 {
+    margin: 0;
+    margin-top: 20px;
+    font-size: 34px;
+    line-height: 44px;
+    font-weight: 600;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+}
+
+.active-img {
+    width: 970px;
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom;
+    margin-bottom: 30px;
+}
+
+.set-photos {
+    display: flex;
+    list-style: none;
+    width: 970px;
+    padding: 0;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.set-photos a {
+    position: relative;
+    display: block;
+}
+
+.set-photos a.active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(59, 148, 175, 0.67);
+}
+
+.set-photos img {
+    display: block;
+}
+
+.sections {
+    background-color: #F0EEFF;
+}
+
+
+
+.interactiveMap {
+    width: 1270px;
+
+    margin: 0 auto;
+}
+
+.interactiveMap h2 {
+    margin: 0;
+    padding: 100px 0 60px;
+    font-size: 34px;
+    line-height: 44px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#map {
+    
+    height: calc(100vh - 100px);
+    margin-bottom: 10px;
+
+}
+
+#map #inputs {
+    position: absolute;
+    top: 3800px;
+    left: 10px;
+    z-index: 38--;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#inputs input[type="text"],
+#inputs select {
+    width: calc(50% - 10px); 
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; 
+}
+
+#inputs button {
+    padding: 8px 15px;
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#routeInfo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+#categorySelect {
+    padding: 1px 12px;
+    border: 1px solid rgba(196, 14, 50, 0.8);
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit; 
+}
