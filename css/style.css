@@ -478,3 +478,29 @@ header {
     border-color: #1e88e5; /* Изменили цвет границы при фокусе */
     box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.2); /* Добавили тень при фокусе */
 }
+
+.balloon {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f3ecec;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.balloon__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #212121;
+}
+
+.balloon__description {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.balloon__image {
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    max-width: 200px;
+    height: auto;
+}

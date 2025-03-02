@@ -235,11 +235,10 @@ function displayRoutesOnMap(routes) {
         // Создать метку для каждого маршрута
         let placemark = new ymaps.Placemark([route.latitude, route.longitude], {
             balloonContentBody: `
-                <div>
-                    <h3>${route.name}</h3>
-                    <p>${route.description}</p>
-                    
-                    <img src="${route.photo}" alt="${route.name}" style="max-width: 200px;">
+                <div class="balloon">
+                    <h3 class="balloon__title">${route.name}</h3>
+                    <p class="balloon__description">${route.description}</p>
+                    <img class="balloon__image" src="${route.photo}" alt="${route.name}" style="max-width: 200px;">
                 </div>
             `
         });
