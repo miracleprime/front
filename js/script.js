@@ -238,7 +238,7 @@ function displayRoutesOnMap(routes) {
                 <div>
                     <h3>${route.name}</h3>
                     <p>${route.description}</p>
-                    <p>Тип: ${route.activity_type}</p>
+                    
                     <img src="${route.photo}" alt="${route.name}" style="max-width: 200px;">
                 </div>
             `

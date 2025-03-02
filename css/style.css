@@ -1,31 +1,64 @@
+/* Общие стили */
 body {
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    line-height: 26px;
-    color: #05182f;
-    font-family: "Roboto", sans-serif;
-    background-color: #FFFFFF;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Ссылки */
+a {
+    color: #1e88e5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #1565c0;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Шапка (header) */
 header {
-    position: fixed; 
-    top: 0; 
-    left: 0;
-    width: 100%;
-    z-index: 1000; 
-    background-color: #877ec7;
-    padding: 10px 0;
+    background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1270px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
 }
 
 .main-header {
@@ -40,96 +73,86 @@ header {
 }
 
 .navigationItem {
-    margin-right: 20px;
+    margin-left: 1.5rem;
 }
 
 .navigationItem a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
+    color: #212121;
+    font-size: 1.1rem;
     font-weight: 500;
-    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navigationItem a:hover {
-    color: #163152;
+    background-color: #eee;
+    color: #1e88e5;
 }
 
-@media (max-width: 768px) {
-    .header1 {
-        flex-direction: column;
-        align-items: center;
-    }
-    .navigationItem {
-        margin: 10px 0;
-        margin-right: 0;
-    }
-}
+/* Секция главного экрана (headerMain) */
 .headerMain {
-  width: 1270px;
-  margin: 0 auto;
-  padding: 50px 0;
+    background-color: #fff;
+    padding: 4rem 0;
+    text-align: center;
 }
 
 .headerMain img {
-    vertical-align: bottom;
-    margin-bottom: 50px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .headerMain h1 {
-    text-align: left;
-    font-size: 64px;
-    line-height: 64px;
-    font-weight: 800;
-    margin-bottom: 12px;
-    margin: 0;
+    font-size: 3rem;
+    color: #212121;
+    margin-bottom: 1.5rem;
 }
-/*
-*/
 
+/* Секция с событиями (event0) */
 .event0 {
-    padding: 80px 0;
-    background-color: #F0EEFF;
+    padding: 4rem 0;
 }
 
 .event {
     display: flex;
-    justify-content: space-between;
-    width: 1270px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    margin-bottom: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-.event:last-child{
-    margin-bottom: 0;
+.event:nth-child(even) {
+    flex-direction: row-reverse;
 }
-
 
 .content {
-    width: 570px;
-    padding: 20px;
-    padding-bottom: 28px;
+    padding: 2rem;
+    width: 50%;
+    box-sizing: border-box;
 }
 
 .content h3 {
-    margin: 0;
-    font-size: 28px;
-    line-height: 36px;
-    font-weight: 600;
-    color: #0e0438;
-    margin-bottom: 12px;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
 }
 
-.content p{
-    margin: 0;
-    margin-bottom: 12px;
+.content p {
+    margin-bottom: 1rem;
 }
 
-.content .last {
-    margin-bottom: 0;
+.event img {
+    width: 50%;
+    height: auto;
+    display: block;
 }
 
+/* Секция галереи (gallery) */
 .gallery {
     text-align: center;
 }
@@ -142,6 +165,7 @@ header {
     font-weight: 600;
     margin-bottom: 60px;
     text-transform: uppercase;
+    color: #212121;
 }
 
 .active-img {
@@ -150,6 +174,8 @@ header {
     padding: 0;
     vertical-align: bottom;
     margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .set-photos {
@@ -180,81 +206,275 @@ header {
 .set-photos img {
     display: block;
 }
-
+/* Секция карты (mapSection) */
+/* Секция карты (mapSection) */
 .sections {
-    background-color: #F0EEFF;
+    padding: 4rem 0;
+    background-color: #f8f8f8;
 }
 
-
-
 .interactiveMap {
-    width: 1270px;
-
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .interactiveMap h2 {
-    margin: 0;
-    padding: 100px 0 60px;
-    font-size: 34px;
-    line-height: 44px;
-    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
     text-align: center;
-    text-transform: uppercase;
+    color: #212121;
 }
 
 #map {
-    
-    height: calc(100vh - 100px);
-    margin-bottom: 10px;
-
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+    height: 70vh; 
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-#map #inputs {
-    position: absolute;
-    top: 3800px;
-    left: 10px;
-    z-index: 38--;
-    background-color: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+#addPlaceForm {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
 }
 
-#inputs input[type="text"],
-#inputs select {
-    width: calc(50% - 10px); 
-    padding: 8px;
-    margin-bottom: 10px;
+#addPlaceForm h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #212121;
+    text-align: center;
+}
+
+#addPlaceForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#addPlaceForm input[type="text"],
+#addPlaceForm textarea,
+#addPlaceForm select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
     border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box; 
-}
-
-#inputs button {
-    padding: 8px 15px;
-    background-color: #4CAF50; 
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-#routeInfo {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    z-index: 100;
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-}
-#categorySelect {
-    padding: 1px 12px;
-    border: 1px solid rgba(196, 14, 50, 0.8);
     border-radius: 4px;
-    font-size: 16px;
-    font-family: inherit; 
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#addPlaceForm textarea {
+    resize: vertical;
+}
+
+#addPlaceForm button {
+    background-color: #1e88e5;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#addPlaceForm button:hover {
+    background-color: #1565c0;
+}
+
+#addPlaceForm button[id="cancelAddPlaceButton"] {
+    background-color: #f44336;
+    margin-left: 0.5rem;
+}
+
+#addPlaceForm button[id="cancelAddPlaceButton"]:hover {
+    background-color: #d32f2f;
+}
+
+/* Стили для списка мест, ожидающих модерации */
+#pendingRoutesList {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+#pendingRoutesList li {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#pendingRoutesList h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #212121;
+}
+
+#pendingRoutesList p {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#pendingRoutesList img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+#pendingRoutesList button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#pendingRoutesList button.rejectButton {
+    background-color: #f44336;
+    margin-left: 0.5rem;
+}
+
+#pendingRoutesList button:hover {
+    background-color: #43a047;
+}
+
+#pendingRoutesList button.rejectButton:hover {
+    background-color: #d32f2f;
+}
+
+/* Стиль для модерации */
+#moderateSection input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#moderateSection button {
+    background-color: #1e88e5;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#moderateSection button:hover {
+    background-color: #1565c0;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .header1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navigationItem {
+        margin: 0.5rem 0;
+    }
+
+    .headerMain {
+        padding: 2rem 0;
+    }
+
+    .headerMain h1 {
+        font-size: 2.5rem;
+    }
+
+    .event {
+        flex-direction: column;
+    }
+
+    .event:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .event img {
+        width: 100%;
+    }
+
+    .interactiveMap {
+        padding: 0 1rem;
+    }
+
+    .active-img {
+        width: 100%;
+    }
+
+    .set-photos {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .set-photos li {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+#addPlaceButton {
+    background-color: #2196F3; /* Изменили цвет фона */
+    color: #fff; /* Изменили цвет текста */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem; /* Добавили отступ сверху */
+}
+
+#addPlaceButton:hover {
+    background-color: #1976D2; /* Изменили цвет фона при наведении */
+}
+
+
+#categorySelect {
+    width: 200px; /* Задали ширину выпадающего списка */
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none; /* Убрали стандартные стили выпадающего списка */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Добавили стрелку */
+    background-repeat: no-repeat;
+    background-position: right 0.75rem top 50%;
+    background-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#categorySelect:hover {
+    border-color: #999; /* Изменили цвет границы при наведении */
+}
+
+#categorySelect:focus {
+    outline: none;
+    border-color: #1e88e5; /* Изменили цвет границы при фокусе */
+    box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.2); /* Добавили тень при фокусе */
 }
