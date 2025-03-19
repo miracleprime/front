@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Отзывы</title>
+</head>
+<body>
+
+    {{ route.name }}
+    {{ route.description }}
+    {{ route.photo }}" alt="{{ route.name }}" class="balloon__image">
+
+
+    <h4>Отзывы:</h4>
+    {% for review in reviews %}
+         {{ review.username }}: {{ review.text }} (Оценка: {{ review.rating }})
+    {% endfor %}
+
+
+    
+        <textarea name="text" placeholder="Ваш отзыв"></textarea><br>
+        
+            1 звезда
+            2 звезды
+            3 звезды
+            4 звезды
+            5 звезд
+        
+        Отправить отзыв
+    
+
+</body>
+</html>

@@ -165,9 +165,14 @@ document.addEventListener('DOMContentLoaded', function() { // Гарантиру
     // Функция для получения координат клика по карте
     function getCoordinatesFromClick(e) {
         let coords = e.get('coords');
-        document.getElementById('placeLatitude').value = coords[0];
-        document.getElementById('placeLongitude').value = coords[1];
+        if (coords) {
+            document.getElementById('placeLatitude').value = coords[0];
+            document.getElementById('placeLongitude').value = coords[1];
+        } else {
+            console.error('Не удалось получить координаты клика.');
+        }
     }
+
 
     // Обработчик клика по кнопке "Добавить место"
     addPlaceButton.addEventListener('click', function() {
@@ -225,29 +230,103 @@ document.addEventListener('DOMContentLoaded', function() { // Гарантиру
     mapElement.addEventListener('click', getCoordinatesFromClick);
 });
 
+function loadReviews(routeId) {
+    const reviewsDiv = document.getElementById(`reviews-${routeId}`);
+    if (!reviewsDiv) {
+        console.error(`Элемент для отзывов с ID reviews-${routeId} не найден`);
+        return;
+    }
 
-function displayRoutesOnMap(routes) {
-    // Очистить карту от старых меток (если необходимо)
-    myMap.geoObjects.removeAll();
-
-    routes.forEach(route => {
-        console.log(route.photo);
-        // Создать метку для каждого маршрута
-        let placemark = new ymaps.Placemark([route.latitude, route.longitude], {
-            balloonContentBody: `
-                <div class="balloon">
-                    <h3 class="balloon__title">${route.name}</h3>
-                    <p class="balloon__description">${route.description}</p>
-                    <img class="balloon__image" src="${route.photo}" alt="${route.name}" style="max-width: 200px;">
-                </div>
-            `
+    fetch(`/api/routes/${routeId}/reviews`)
+        .then(response => response.json())
+        .then(data => {
+            let reviewsHTML = '';
+            data.forEach(review => {
+                reviewsHTML += `
+                    <p><b>${review.username || 'Аноним'}</b> (${review.rating}): ${review.text}</p>
+                `;
+            });
+            reviewsDiv.innerHTML = reviewsHTML || 'Нет отзывов.';
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке отзывов:', error);
+            reviewsDiv.innerHTML = 'Ошибка при загрузке отзывов.';
         });
+}
 
-        // Добавить метку на карту
-        myMap.geoObjects.add(placemark);
+function submitReview(routeId) {
+    const reviewText = document.getElementById(`reviewText-${routeId}`).value;
+    const reviewRating = document.getElementById(`reviewRating-${routeId}`).value;
+    const apiUrl = `/api/routes/${routeId}/reviews`;
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            text: reviewText,
+            rating: reviewRating
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error('Ошибка при отправке отзыва:', response.status, response.statusText);
+            return response.json().then(err => { throw new Error(err.error || 'Ошибка при отправке отзыва'); });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Отзыв успешно отправлен:', data);
+        alert('Отзыв успешно отправлен!');
+        loadReviews(routeId);
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Ошибка: ' + error.message);
     });
 }
 
+function displayRoutesOnMap(routes) {
+    myMap.geoObjects.removeAll();
+
+    routes.forEach(route => {
+        if (!route || !route.id) {
+            console.error("Объект route или route.id не определены:", route);
+            return; // Пропускаем текущую итерацию цикла
+        }
+        let balloonContentBody = `
+            <div class="balloon">
+                <h3 class="balloon__title">${route.name}</h3>
+                <p class="balloon__description">${route.description}</p>
+                <img class="balloon__image" src="${route.photo}" alt="${route.name}" style="max-width: 200px;">
+
+                
+                    <h4>Отзывы:</h4>
+                    <div id="reviews-${route.id}">Загрузка отзывов...</div>
+
+                
+                <h4>Оставить отзыв:</h4>
+                <textarea id="reviewText-${route.id}" placeholder="Ваш отзыв"></textarea><br>
+                <input type="number" id="reviewRating-${route.id}" min="1" max="5" placeholder="Оценка 1-5"><br>
+                <button onclick="submitReview(${route.id})">Отправить отзыв</button>
+            </div>
+        `;
+        let placemark = new ymaps.Placemark([route.latitude, route.longitude], {
+            balloonContentBody: balloonContentBody
+        });
+
+        myMap.geoObjects.add(placemark);
+
+        // Добавляем обработчик события 'balloonopen'
+        placemark.events.add('balloonopen', function (event) {
+            // Получаем routeId из данных метки
+            let routeId = route.id;
+            // Загружаем отзывы для текущего routeId
+            loadReviews(routeId);
+        });
+    });
+}
 function loadRoutes(category) {
     let url = 'http://127.0.0.1:5000/api/routes'; // ПРАВИЛЬНЫЙ URL!
     if (category) {
@@ -371,10 +450,14 @@ function init() {
         zoom: 14,
         controls: ['routePanelControl']
     });
-    myMap.events.add('click', function(e) {
+
+    // Получаем элемент с ID 'map'
+    let mapElement = document.getElementById('map');
+
+    // Добавляем обработчик события 'click' к элементу 'map'
+    mapElement.addEventListener('click', function(e) {
         getCoordinatesFromClick(e);
     });
-
 
     let categorySelect = document.getElementById('categorySelect');
 
@@ -391,10 +474,10 @@ function init() {
         document.getElementById('placeLongitude').value = coords[1];
     }
     loadPendingRoutes();
-        const getCoordinatesButton = document.getElementById('getCoordinatesButton');
-        if (getCoordinatesButton) {
-            getCoordinatesButton.addEventListener('click', getCoordinatesByAddress);
-        }
+    const getCoordinatesButton = document.getElementById('getCoordinatesButton');
+    if (getCoordinatesButton) {
+        getCoordinatesButton.addEventListener('click', getCoordinatesByAddress);
+    }
 }
 
 // Инициализировать карту Yandex только один раз
