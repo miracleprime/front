@@ -289,44 +289,56 @@ function submitReview(routeId) {
 
 function displayRoutesOnMap(routes) {
     myMap.geoObjects.removeAll();
-
-    routes.forEach(route => {
-        if (!route || !route.id) {
-            console.error("Объект route или route.id не определены:", route);
-            return; // Пропускаем текущую итерацию цикла
-        }
-        let balloonContentBody = `
-            <div class="balloon">
-                <h3 class="balloon__title">${route.name}</h3>
-                <p class="balloon__description">${route.description}</p>
-                <img class="balloon__image" src="${route.photo}" alt="${route.name}" style="max-width: 200px;">
-
-                
-                    <h4>Отзывы:</h4>
-                    <div id="reviews-${route.id}">Загрузка отзывов...</div>
-
-                
-                <h4>Оставить отзыв:</h4>
-                <textarea id="reviewText-${route.id}" placeholder="Ваш отзыв"></textarea><br>
-                <input type="number" id="reviewRating-${route.id}" min="1" max="5" placeholder="Оценка 1-5"><br>
-                <button onclick="submitReview(${route.id})">Отправить отзыв</button>
-            </div>
-        `;
-        let placemark = new ymaps.Placemark([route.latitude, route.longitude], {
-            balloonContentBody: balloonContentBody
-        });
-
-        myMap.geoObjects.add(placemark);
-
-        // Добавляем обработчик события 'balloonopen'
-        placemark.events.add('balloonopen', function (event) {
-            // Получаем routeId из данных метки
-            let routeId = route.id;
-            // Загружаем отзывы для текущего routeId
-            loadReviews(routeId);
-        });
+  
+    routes.forEach((route) => {
+      if (!route || !route.id) {
+        console.error("Объект route или route.id не определены:", route);
+        return; // Пропускаем текущую итерацию цикла
+      }
+      let balloonContentBody = `
+        <div class="balloon">
+          <h3 class="balloon__title">${route.name}</h3>
+          <p class="balloon__description">${route.description}</p>
+          <img class="balloon__image" src="${route.photo}" alt="${
+        route.name
+      }" style="max-width: 200px;">
+  
+          <div class="balloon__reviews">
+            <h4>Отзывы:</h4>
+            <div id="reviews-${route.id}">Загрузка отзывов...</div>
+          </div>
+  
+          <div class="balloon__review-form">
+            <h4>Оставить отзыв:</h4>
+            <textarea id="reviewText-${
+        route.id
+      }" placeholder="Ваш отзыв"></textarea><br>
+            <select id="reviewRating-${route.id}" min="1" max="5">
+              <option value="1">1 звезда</option>
+              <option value="2">2 звезды</option>
+              <option value="3">3 звезды</option>
+              <option value="4">4 звезды</option>
+              <option value="5">5 звезд</option>
+            </select><br>
+            <button onclick="submitReview(${route.id})">Отправить отзыв</button>
+          </div>
+        </div>
+      `;
+      let placemark = new ymaps.Placemark([route.latitude, route.longitude], {
+        balloonContentBody: balloonContentBody,
+      });
+  
+      myMap.geoObjects.add(placemark);
+  
+      // Добавляем обработчик события 'balloonopen'
+      placemark.events.add("balloonopen", function (event) {
+        // Получаем routeId из данных метки
+        let routeId = route.id;
+        // Загружаем отзывы для текущего routeId
+        loadReviews(routeId);
+      });
     });
-}
+  }
 function loadRoutes(category) {
     let url = 'http://127.0.0.1:5000/api/routes'; // ПРАВИЛЬНЫЙ URL!
     if (category) {

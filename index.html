@@ -12,12 +12,25 @@
     <script src="https://yandex.st/jquery/2.2.3/jquery.min.js"></script>
 </head>
 <body>
-    {% if username %}
-    <p>Привет, {{ username }}!</p>
-    <a href="{{ url_for('routes.logout') }}">Выйти</a>
-    {% else %}
-        <p>Вы не авторизованы. <a href="{{ url_for('routes.login') }}">Войти</a> или <a href="{{ url_for('routes.register') }}">Зарегистрироваться</a></p>
-    {% endif %}
+    
+    <div class="auth-section">
+        {% if username %}
+            <span><i class="fas fa-user"></i> Привет, {{ username }}!</span>
+            <a href="{{ url_for('routes.logout') }}" class="auth-button">
+                <i class="fas fa-sign-out-alt"></i> Выйти
+            </a>
+        {% else %}
+            <span><i class="fas fa-exclamation-circle"></i> Вы не авторизованы.</span>
+            <a href="{{ url_for('routes.login') }}" class="auth-button">
+                <i class="fas fa-sign-in-alt"></i> Войти
+            </a>
+            <span>или</span>
+            <a href="{{ url_for('routes.register') }}" class="auth-button">
+                <i class="fas fa-user-plus"></i> Зарегистрироваться
+            </a>
+        {% endif %}
+    </div>
+
     <header>
         <div class="header1" id="header1">
             <nav class="main-header">

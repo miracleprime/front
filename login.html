@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"><link rel="stylesheet" href="static/css/style.css">
-    <title>Вход</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Вход </title>
 </head>
 <body>
-    <h2>Вход</h2>
-    <form method="post" action="{{ url_for('routes.login') }}">
-        <p>Логин: <input type="text" name="username"></p>
-        <p>Пароль: <input type="password" name="password"></p>
+    <form method="post" action="{{ url_for('routes.login') }}" class="auth-form">
+        <h4>Вход</h4>
+        <p>Логин: <input type="text" name="username" class="auth-form__input"></p>
+        <p>Пароль: <input type="password" name="password" class="auth-form__input"></p>
         <p><button type="submit">Войти</button></p>
-    </form>
-    <p><a href="{{ url_for('routes.register') }}">Зарегистрироваться</a></p>
+    <p><a href="{{ url_for('routes.register') }}">Зарегистрироваться </a> </p>
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
+</form>
 </body>
 </html>

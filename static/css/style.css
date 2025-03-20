@@ -504,3 +504,165 @@ header {
     max-width: 200px;
     height: auto;
 }
+
+.balloon__reviews {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.balloon__reviews p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.4;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.balloon__reviews p:last-child {
+    border-bottom: none;
+}
+
+/* Стили для формы отзыва */
+.balloon__review-form {
+    margin-top: 1.5rem;
+}
+
+.balloon__review-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.balloon__review-form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.balloon__review-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+}
+
+.balloon__review-form button:hover {
+    background-color: #388E3C;
+}
+
+
+
+/* Стили для форм авторизации */
+.auth-form {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.auth-form h4 {
+    text-align: center !important;
+    margin-bottom: 20px;
+}
+.auth-form p {
+    margin-bottom: 10px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.auth-form__input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.auth-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.auth-form button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+.auth-form .error {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Стили для секции авторизации/регистрации */
+
+
+.auth-section {
+    text-align: right;
+    padding: 0.75rem 1rem;
+    background-color: #fff; /* Белый фон */
+    border-bottom: 1px solid #eee; /* Тонкая граница снизу */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Легкая тень */
+    font-size: 0.9rem; /* Уменьшенный размер шрифта */
+}
+
+.auth-section a {
+    color: #1e88e5;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.auth-section a:hover {
+    color: #1565c0;
+}
+
+.auth-button {
+    background-color: transparent;
+    border: 1px solid #1e88e5; /* Рамка для кнопок */
+    color: #1e88e5;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.auth-button:hover {
+    background-color: #1e88e5;
+    color: #fff;
+}
+
+.auth-section i {
+    margin-right: 0.3rem; /* Отступ для иконок */
+    color: #777;
+}
