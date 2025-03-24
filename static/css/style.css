@@ -111,7 +111,6 @@ header {
     margin-bottom: 1.5rem;
 }
 
-/* Секция с событиями (event0) */
 .event0 {
     padding: 4rem 0;
 }
@@ -354,7 +353,7 @@ header {
     background-color: #d32f2f;
 }
 
-/* Стиль для модерации */
+
 #moderateSection input[type="password"] {
     width: 100%;
     padding: 0.75rem;
@@ -381,7 +380,7 @@ header {
     background-color: #1565c0;
 }
 
-/* Медиа-запросы для адаптивности */
+
 @media (max-width: 768px) {
     .header1 {
         flex-direction: column;
@@ -454,14 +453,14 @@ header {
 
 
 #categorySelect {
-    width: 200px; /* Задали ширину выпадающего списка */
+    width: 200px; 
     padding: 0.75rem 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
-    appearance: none; /* Убрали стандартные стили выпадающего списка */
+    appearance: none; 
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Добавили стрелку */
     background-repeat: no-repeat;
     background-position: right 0.75rem top 50%;
@@ -571,7 +570,6 @@ header {
 
 
 
-/* Стили для форм авторизации */
 .auth-form {
     width: 300px;
     margin: 20px auto;
@@ -629,10 +627,10 @@ header {
 .auth-section {
     text-align: right;
     padding: 0.75rem 1rem;
-    background-color: #fff; /* Белый фон */
-    border-bottom: 1px solid #eee; /* Тонкая граница снизу */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Легкая тень */
-    font-size: 0.9rem; /* Уменьшенный размер шрифта */
+    background-color: #fff; 
+    border-bottom: 1px solid #eee; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); 
+    font-size: 0.9rem; 
 }
 
 .auth-section a {
@@ -648,7 +646,7 @@ header {
 
 .auth-button {
     background-color: transparent;
-    border: 1px solid #1e88e5; /* Рамка для кнопок */
+    border: 1px solid #1e88e5; 
     color: #1e88e5;
     padding: 0.3rem 0.75rem;
     border-radius: 4px;
@@ -663,6 +661,6 @@ header {
 }
 
 .auth-section i {
-    margin-right: 0.3rem; /* Отступ для иконок */
+    margin-right: 0.3rem; 
     color: #777;
 }
